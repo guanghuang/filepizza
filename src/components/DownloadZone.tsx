@@ -91,7 +91,9 @@ export default function DownloadZone({
           .map((_, index) => (
             <input
               key={index}
-              type="text"
+              type="tel"
+              inputMode="numeric"
+              pattern="\d*"
               maxLength={1}
               className="w-10 h-10 border border-gray-500 rounded text-center"
               onChange={(e) => handleInputChange(e, index)}

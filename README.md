@@ -1,3 +1,36 @@
+This repo is a fork of [FilePizza](https://github.com/kern/filepizza) with the following changes:
+-   Added a code input to retrieve the file
+
+After the file is uploaded, the code is displayed on the screen. 
+![code](upload.png)
+
+On the home page, the user can enter the code to retrieve the file.
+![code](home.png)
+
+simple docker cmd to run filepizza:
+```
+docker run -d --name filepizza -p 8080:8080 -e PORT=8080 -v /media/docker/anisette/data:/home/Alcoholic/.config/anisette-v3/lib/ guang1/filepizza:latest
+```
+
+or using docker compose:
+```
+services:
+    filepizza:
+        container_name: filepizza
+        volumes:
+            - /media/docker/anisette/data:/home/Alcoholic/.config/anisette-v3/lib/
+        ports:
+            - 8080:8080
+        environment:
+            - PORT=8080
+        restart: always
+        image: guang1/filepizza:latest
+        network_mode: bridge
+```
+
+for advanced docker setup, see [docker-compose.yml](docker-compose.yml), [docker-compose.prod.yml](docker-compose.prod.yml)
+
+---------------
 <a href="https://xkcd.com/949/"><img src="http://imgs.xkcd.com/comics/file_transfer.png" alt="XKCD 949" width="30%" align="right" /></a> <img src="public/images/wordmark.png" alt="FilePizza wordmark" width="50%" /> <h3>Peer-to-peer file transfers in your browser</h3>
 
 *Cooked up by [Alex Kern](https://kern.io) & [Neeraj Baid](https://github.com/neerajbaid) while eating Sliver @ UC Berkeley.*

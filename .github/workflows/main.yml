@@ -1,8 +1,8 @@
 name: main
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 jobs:
   build:
     name: Docker build, tag, and push
@@ -14,3 +14,4 @@ jobs:
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_NAMESPACE: ${{ secrets.DOCKER_NAMESPACE }}

@@ -12,8 +12,8 @@ RUN apk add --no-cache pnpm
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Builds standalone output
-RUN pnpm build
+# Builds standalone output with download code feature
+RUN pnpm build:code
 
 # Stage 3: Runner
 FROM node:lts-alpine AS runner
